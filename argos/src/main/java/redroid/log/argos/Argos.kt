@@ -28,7 +28,7 @@ object Argos {
 		builder.block()
 
 		initTimber()
-		initLogan(builder.toLoganConfig())
+//		initLogan(builder.toLoganConfig())
 
 		isInitialized = true
 	}

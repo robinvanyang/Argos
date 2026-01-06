@@ -34,21 +34,34 @@ class ConsoleTree : Timber.DebugTree() {
 	}
 
 	override fun createStackElementTag(element: StackTraceElement): String {
-		var tag = super.createStackElementTag(element)
-		val superTag = tag
-		tag = if (null == superTag) {
-			DEFAULT_TAG
-		} else {
-			if (element.fileName.contains(".")) {
-				val begin = "("
-				val suffix = element.fileName.substring(element.fileName.lastIndexOf("."))
-				val end = ":" + element.lineNumber + ")"
-				begin + superTag + suffix + end
-			} else {
-				superTag
-			}
-		}
-		return tag
+//		var tag = super.createStackElementTag(element)
+//		val superTag = tag
+//		tag = if (null == superTag) {
+//			DEFAULT_TAG
+//		} else {
+//			if (element.fileName.contains(".")) {
+//				val begin = "("
+//				val suffix = element.fileName.substring(element.fileName.lastIndexOf("."))
+//				val end = ":" + element.lineNumber + ")"
+//				begin + superTag + suffix + end
+//			} else {
+//				superTag
+//			}
+//		}
+//
+//
+//		return tag
+
+        return if (element.fileName.contains(".")) {
+            val begin = ""
+//            val suffix = element.fileName.substring(element.fileName.lastIndexOf("."))
+            val end = ":" + element.lineNumber + ""
+            begin + element.fileName + end
+        } else {
+
+            val superTag = super.createStackElementTag(element)
+            superTag ?: DEFAULT_TAG
+        }
 	}
 
 	companion object {
